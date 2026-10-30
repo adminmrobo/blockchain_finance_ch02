@@ -1,0 +1,15 @@
+nav.path{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.pchip{display:inline-flex;gap:6px;align-items:center;font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--panel);color:var(--muted);text-decoration:none}
+.pchip b{color:var(--accent);font-variant-numeric:tabular-nums}
+.pchip:hover{color:var(--text);border-color:var(--muted)}
+.pchip.on{background:rgba(196,138,90,.18);border-color:var(--accent);color:var(--text)}
+footer .pn a{color:var(--info)}
+.guess .bt[aria-pressed=true]{background:var(--amber);border-color:var(--amber);color:#13141f}
+.stage img{width:23%;max-width:150px}
+/* index */
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:16px 0}
+.toc a{display:block;background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:14px;color:var(--text);text-decoration:none}
+.toc a:hover{border-color:var(--accent)}
+.toc .n{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.toc p{margin:.3em 0 0;color:var(--muted);font-size:14.5px}
+.toc .res{display:inline-block;margin-top:8px;font-size:12px;padding:1px 9px;border-radius:999px;border:1px solid var(--rule)}

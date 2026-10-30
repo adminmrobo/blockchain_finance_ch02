@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>블록체인 2장 블록체인 기술</title>
+<meta name="description" content="블록체인 편 2장 「블록체인 기술」 목차: 블록, 해시, 해시 사슬, 이력, 사례, 채굴, 난이도와 확정의 일곱 편">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/lab.css">
+</head><body>
+<div id="prog" aria-hidden="true"></div>
+<nav class="top" aria-label="바로가기"><a class="logo" href="index.html"><i></i>블록체인 2장</a><a class="l" href="#toc">목차</a><a class="l" href="#ladder">사다리</a><a class="l" href="#score">대결 결산</a><a class="l" href="#about">이 저장소</a></nav>
+<header class="hero" id="top"><div class="hex"></div>
+  <div class="hero-bg" data-img="bg_ch2_index" role="img" aria-label="금화와 장부가 쌓인 회계실을 픽셀로 그린 배경"><canvas id="heroCv" aria-hidden="true"></canvas></div>
+  <div class="wrap"><div class="hero-text">
+    <div class="eyebrow">연구실 해설 대시보드 · 블록체인 편</div>
+    <h1>2장 블록체인 기술</h1>
+    <p class="q">모두가 나눠 든 장부를 어떻게 묶고, 고친 흔적을 어떻게 드러내고, 다시 쓰기를 어떻게 비싸게 만들까?</p>
+    <p class="lead">1장은 "모두가 장부를 나눠 든다"에서 끝났습니다. 2장은 그 장부의 부품을 하나씩 엽니다. 블록 → 해시 → 해시 사슬 → 이력 → 사례 → 채굴 → 난이도와 확정. 해시는 모두 브라우저에서 실제 SHA-256으로 계산하고, 마지막 편에서는 백서의 확률 식을 그대로 돌려 봅니다.</p></div>
+    <div class="dialog"><div class="say " data-who="doc"><img class="who" data-who="doc" data-mood="front" data-img="doc_e08" alt="" aria-hidden="true"><div><b class="name">박사</b><p>한 편에 두 칸씩, 모두 열네 칸의 사다리예요. 2-01부터 순서대로 읽으면 각 칸이 앞 칸의 한계에서 시작해요.</p></div></div>
+    <div class="say " data-who="asst"><img class="who" data-who="asst" data-mood="smile" data-img="asst_e13" alt="" aria-hidden="true"><div><b class="name">하루(조수)</b><p>2-03에서 남은 "다시 쓰기가 너무 싸다"는 문제를 2-06의 채굴이 풀고, 2-07에서 그 효과를 확률로 재요.</p></div></div></div>
+  </div></header>
+<section class="level" id="toc"><div class="wrap"><h2>목차</h2><div class="toc"><a href="2-01_block-bundle.html"><span class="n">2-01</span> <b>블록 — 거래를 묶어 장부의 한 쪽으로</b><p>거래를 블록으로 묶고 머리글에 요약을 담는다. 묶으면 무엇이 줄고 무엇이 늦어지는가.</p><p class="glabel">대결: 거래 1,000건, 블록에 몇 건씩 담을까?</p><span class="res" style="color:var(--c-robo);border-color:var(--c-robo)">R · Money-Robo 승</span></a><a href="2-02_hash-fingerprint.html"><span class="n">2-02</span> <b>해시 — 데이터의 지문</b><p>쉼표 하나에 지문이 통째로 바뀌는 해시. 단방향인데도 후보가 적으면 찾히는 이유.</p><p class="glabel">대결: 해시만 공개하면 안전할까?</p><span class="res" style="color:var(--c-fly);border-color:var(--c-fly)">F · 초파리 승</span></a><a href="2-03_hash-chain.html"><span class="n">2-03</span> <b>해시 사슬 — 고치면 뒤가 전부 어긋난다</b><p>이전 블록의 지문을 담아 사슬로 묶는다. 하나를 고치면 뒤가 모두 어긋난다.</p><p class="glabel">대결: 다시 맞춘 위조 사슬, 받아들여질까?</p><span class="res" style="color:var(--c-fly);border-color:var(--c-fly)">X · Money-Robo 실격</span></a><a href="2-04_history-not-database.html"><span class="n">2-04</span> <b>데이터베이스가 아닌 이력 — 블록체인이 저장하는 것</b><p>현재 값만 남기는 데이터베이스와 모든 변경을 남기는 이력. 각자 잘하는 일.</p><p class="glabel">대결: 거래 1만 건 뒤, 잔액 조회 1,000번</p><span class="res" style="color:var(--c-robo);border-color:var(--c-robo)">R · Money-Robo 승</span></a><a href="2-05_provenance-cases.html"><span class="n">2-05</span> <b>블록체인 서비스 사례 — 부동산·쇠고기·고등어의 이력</b><p>고등어·쇠고기·부동산. 단계마다 기록하면 잡히는 것과 끝내 못 잡는 것.</p><p class="glabel">대결: 가짜 원산지 고등어 100상자, 몇 상자를 잡나?</p><span class="res" style="color:var(--c-fly);border-color:var(--c-fly)">F · 초파리 승</span></a><a href="2-06_mining-race.html"><span class="n">2-06</span> <b>채굴 — 블록을 쓰는 권리와 그 비용</b><p>논스를 바꿔 가며 직접 SHA-256 채굴. 계산력 몫이 곧 블록을 쓸 권리다.</p><p class="glabel">대결: 장비 1대 vs 4대, 블록 100개 경주</p><span class="res" style="color:var(--c-robo);border-color:var(--c-robo)">R · Money-Robo 승</span></a><a href="2-07_difficulty-and-confirmation.html"><span class="n">2-07</span> <b>난이도와 확정 — 몇 블록을 기다려야 안심할까</b><p>난이도 조정으로 블록 간격을 지키고, 백서의 식으로 기다릴 블록 수를 계산한다.</p><p class="glabel">대결: 1블록 확정 vs 6블록 확정</p><span class="res" style="color:var(--c-fly);border-color:var(--c-fly)">F · 초파리 승</span></a></div></div></section>
+<section class="level" id="ladder"><div class="wrap"><h2>한 장으로 보는 사다리</h2>
+  <div class="tw"><table class="tb"><thead><tr><th>편</th><th>다루는 것</th><th>지키는 방법</th><th>남는 약점 → 다음 편</th></tr></thead><tbody>
+  <tr><td>2-01</td><td>블록 (묶음 단위)</td><td>거래를 묶고 머리글에 요약</td><td>요약이 원문과 같은지 → 해시</td></tr>
+  <tr><td>2-02</td><td>해시 (지문)</td><td>한 글자만 바뀌어도 다른 지문</td><td>지문 하나로는 순서·위치를 못 묶음</td></tr>
+  <tr><td>2-03</td><td>해시 사슬</td><td>고치면 뒤 블록이 모두 어긋남</td><td>다시 계산하는 비용이 너무 쌈 → 채굴</td></tr>
+  <tr><td>2-04</td><td>이력 (DB와 비교)</td><td>모든 변경을 지우지 않고 남김</td><td>읽기가 느리다, 대량 처리는 DB</td></tr>
+  <tr><td>2-05</td><td>이력 관리 사례</td><td>단계별 기록으로 중간 바꿔치기 탐지</td><td>처음부터 거짓 입력은 못 잡음</td></tr>
+  <tr><td>2-06</td><td>채굴 (작업증명)</td><td>블록마다 계산 비용, 계산력 몫 = 표</td><td>장비가 늘면 블록이 빨라짐</td></tr>
+  <tr><td>2-07</td><td>난이도와 확정</td><td>간격 유지, 기다릴수록 공격 확률 감소</td><td>q ≥ 0.5 공격 → 3장</td></tr></tbody></table></div>
+</div></section>
+<section class="level" id="score"><div class="wrap"><h2>대결 결산</h2>
+  <section class="kpis"><div class="kpi" style="border-top-color:var(--c-fly)"><b>4승</b><span>초파리 연구원 (실격승 1번 포함)</span></div><div class="kpi" style="border-top-color:var(--c-robo)"><b>3승</b><span>Money-Robo</span></div><div class="kpi a"><b>0번</b><span>무승부</span></div></section>
+  <div class="say " data-who="doc"><img class="who" data-who="doc" data-mood="judge" data-img="doc_e10" alt="" aria-hidden="true"><div><b class="name">박사</b><p>2장은 4 대 3. 묶음·속도·장비는 Money-Robo가, "후보가 적으면?"·"다수 사본과 같은가?"·"몇 블록 기다렸나?" 같은 의심은 초파리가 가져갔다.</p></div></div>
+</div></section>
+<section class="level" id="about"><div class="wrap"><h2>이 저장소</h2>
+  <p class="sub">각 HTML은 assets/ 폴더의 공용 파일(lab.css, lab.js, sprites.js)을 불러옵니다. 저장소를 통째로 올리거나 내려받아 index.html을 열면 됩니다. 편마다 맨 끝의 "온톨로지·서지 꾸러미"에서 지식 그래프와 참고문헌을 ZIP으로 가져갈 수 있습니다.</p>
+  <p class="sub">자료: 강의 교안 「4차산업시대의 금융」 블록체인 단원 p.14–30, Nakamoto (2008). 캐릭터 그림: adminmrobo/fruitfly-lab-expressions (ea5da3f). 저자: 안상선.</p>
+  <p class="pn">이전: 1장 「장부의 진화」 (이전 저장소) · 다음: 3장 「비트코인」 (다음 저장소)</p>
+</div></section>
+<footer><div class="wrap"><p>연구실 해설 대시보드 · 블록체인 편 2장 · v1.0 · 2026-10-29</p></div></footer>
+<div id="tip"></div><div id="study"><span id="stTxt">읽은 곳 0%</span><button id="stBtn" hidden>밑줄</button></div>
+<script src="assets/sprites.js"></script><script src="assets/lab.js"></script>
+<script>Cast.fill();heroArt('C');requestAnimationFrame(loop);addEventListener('scroll',function(){var h=document.documentElement,p=Math.round(100*h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight));$('#prog').style.width=p+'%';$('#stTxt').textContent='읽은 곳 '+p+'%';},{passive:true});</script>
+</body></html>
