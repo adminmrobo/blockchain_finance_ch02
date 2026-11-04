@@ -47,9 +47,9 @@ function majority(L){var c={};L.forEach(function(t){c[t]=(c[t]||0)+1;});var best
     else m.push(['r','위조자가 사본 '+k+'개를 함께 고쳐 위조가 다수가 됐어요. 해시 다시 계산이 공짜라 생기는 문제예요(1-07의 과반 문제).']);ins($('#ins2'),m);drawA();drawB(0);}
   mod(c2b,drawB,true);addEventListener('resize',upd);upd();})();
 
-Duel({names:{fly:'초파리 (원본)',robo:'Money-Robo (재계산 위조)'},higherIsBetter:true,drawMargin:0,
+Duel({names:{fly:'초파리 (원본)',robo:'주판봇 (재계산 위조)'},higherIsBetter:true,drawMargin:0,
   run:function(){var o=check(make()),f=check(forged()),T=tips(1,true),M=majority(T.L);return {fly:o.ok,robo:f.ok,foul:forged()[5].stored!==M.tip};},
   bar:function(v){return v/6;},fmt:function(v){return v+'/6블록';},
   lesson:'검사 통과가 아니라 다수 사본과 같은 사슬이 진짜다',foulRule:'"망의 다수 사본과 같은 사슬만 인정한다"는 규칙',
-  say:function(r){return '내부 검사 통과는 초파리 쪽 '+r.fly+'블록, Money-Robo 쪽 '+r.robo+'블록으로 같아요. 하지만 Money-Robo 사슬의 끝 해시는 아홉 사본 중 여덟과 달라요. 2번 블록을 고친 사슬이에요.';}});
+  say:function(r){return '내부 검사 통과는 초파리 쪽 '+r.fly+'블록, 주판봇 쪽 '+r.robo+'블록으로 같아요. 하지만 주판봇 사슬의 끝 해시는 아홉 사본 중 여덟과 달라요. 2번 블록을 고친 사슬이에요.';}});
 }});

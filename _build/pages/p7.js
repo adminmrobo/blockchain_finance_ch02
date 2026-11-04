@@ -71,8 +71,8 @@ function retarget(jump,grow){var r=rng(27),H=1,Da=1,out=[];
     m.push(['m','백서 대조 — '+chk.join(' · ')]);ins($('#ins2'),m);drawA();}
   mod(c2b,drawB,true);addEventListener('resize',upd);newRace();upd();})();
 
-Duel({names:{fly:'초파리 (6블록 확정)',robo:'Money-Robo (1블록 확정)'},higherIsBetter:false,drawMargin:0,
+Duel({names:{fly:'초파리 (6블록 확정)',robo:'주판봇 (1블록 확정)'},higherIsBetter:false,drawMargin:0,
   run:function(){return {fly:attackerSuccess(0.1,6),robo:attackerSuccess(0.1,1)};},bar:function(v){return Math.max(0.02,(Math.log10(v)+5)/5);},fmt:function(v){return v.toFixed(7);},
   lesson:'기다린 블록 수만큼 되돌려질 확률이 지수적으로 줄어든다',
-  say:function(r){return '공격 성공 확률은 초파리 쪽 '+r.fly.toFixed(7)+', Money-Robo 쪽 '+r.robo.toFixed(7)+'이에요. 백서 표와 같고, 약 '+fmt(r.robo/r.fly)+'배 차이예요. 막대는 로그 눈금이에요.';}});
+  say:function(r){return '공격 성공 확률은 초파리 쪽 '+r.fly.toFixed(7)+', 주판봇 쪽 '+r.robo.toFixed(7)+'이에요. 백서 표와 같고, 약 '+fmt(r.robo/r.fly)+'배 차이예요. 막대는 로그 눈금이에요.';}});
 }});

@@ -47,8 +47,8 @@ function detect(R){for(var i=1;i<R.length;i++){if(R[i].v!==R[i-1].v)return i+1;}
   mod(c2b,drawB,true);addEventListener('resize',upd);upd();})();
 
 function duelRun(chain){var caught=0;for(var i=0;i<100;i++){var mid=i<60,R=records('fish',mid,!mid);if(chain){if(detect(R))caught++;}else{/* 최종 라벨만: 둘 다 "수입산" 라벨이 그럴듯하게 붙어 있다고 가정 → 통과 */}}return caught;}
-Duel({names:{fly:'초파리 (단계별 기록)',robo:'Money-Robo (최종 라벨)'},higherIsBetter:true,drawMargin:0,
+Duel({names:{fly:'초파리 (단계별 기록)',robo:'주판봇 (최종 라벨)'},higherIsBetter:true,drawMargin:0,
   run:function(){return {fly:duelRun(true),robo:duelRun(false)};},bar:function(v){return v/100;},fmt:function(v){return v+'상자';},
   lesson:'단계마다 기록해야 중간 바꿔치기를 잡는다',
-  say:function(r){return '찾아낸 가짜 상자는 초파리 쪽 '+r.fly+'상자, Money-Robo 쪽 '+r.robo+'상자예요. 초파리 쪽도 처음부터 거짓으로 입력된 40상자는 못 찾았어요.';}});
+  say:function(r){return '찾아낸 가짜 상자는 초파리 쪽 '+r.fly+'상자, 주판봇 쪽 '+r.robo+'상자예요. 초파리 쪽도 처음부터 거짓으로 입력된 40상자는 못 찾았어요.';}});
 }});

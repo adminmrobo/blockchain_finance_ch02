@@ -48,15 +48,17 @@ function mod(canvas,draw,animate){if(animate)addMod(canvas,draw);addEventListene
 
 /* ===== 픽셀 지도 (부록 A: 행동 캔버스의 작은 캐릭터) ===== */
 var PAL={K:'#1d1a22',W:'#eceaf3',R:'#e04a3a',r:'#a8281c',U:'#23467e',Y:'#f1c84a',L:'#5a4636',S:'rgba(0,0,0,.35)',B:'#3fb8f0',F:'#f6d3b8',G:'#1e6e73',P:'#ff86b8',N:'#2b3a7a',V:'#b9a6e8',O:'#d4a54a',T:'#7a6a9a',H:'#4a7ac8',E:'#4a8a5a',M:'#3a3a4a'};
+/* 주판봇 팔레트(부록 A-1): E·M·H는 다른 그림이 다른 색으로 쓰므로 robo 지도에만 따로 적용 */
+var PAL_ROBO=Object.assign({},PAL,{E:'#eadfc6',D:'#17352c',M:'#5befa5',A:'#8b5a2b',Q:'#d2603c',H:'#9c978c'});
 var MAPS={
- robo:['.......Y........','.......S........','....WWWWWWWW....','...WWWWWWWWWW...','..WWKKKKKKKKWW..','..WWKYKKKKYKWW..','..WWKYKKKKYKWW..','..WWKKKYYKKKWW..','..WWKKKKKKKKWW..','...WWWWWWWWWW...','....WWWBBWWW....','...WWWWBBWWWW...','..W.WWWWWWWW.W..','....WWWWWWWW....','.....WWWWWW.....','....SSSSSSSS....'],
+ robo:['.......Q........','.......K........','..KKKKKKKKKKKK..','..KEEEEEEEEEEK..','..KEDDDDDDDDEK..','..KEDMDDDDMDEK..','..KEDDDDDDDDEK..','..KEDMDDDDMDEK..','..KEDDMMMMDDEK..','.HKEEEEEEEEEEKH.','HHAAAAAAAAAAAAHH','HHAEQEQEEQEQEAHH','..AAAAAAAAAAAA..','..AEQEQEEQEQEA..','..AAAAAAAAAAAA..','.KKKK......KKKK.'],
  a:['.....KKKK.....','....KKKKKK....','....FFFFFF....','....FKFFKF....','....FFFFFF....','.....FFFF.....','....HHHHHH....','...HHHHHHHH...','...HFHHHHFH...','...HHHHHHHH...','....NN..NN....','....NN..NN....','....KK..KK....'],
  owl:['..K........K..','..KK......KK..','..LLLLLLLLLL..','.LLWWLLLLWWLL.','.LWKKWLLWKKWL.','.LWKKWLLWKKWL.','.LLWWLYYLWWLL.','..LLLLYYLLLL..','..LOOOOOOOOL..','..LOOOOOOOOL..','...LOOOOOOL...','....LL..LL....','....YY..YY....']};
 MAPS.b=MAPS.a.map(function(r){return r.replace(/H/g,'T')});MAPS.c=MAPS.a.map(function(r){return r.replace(/H/g,'E')});MAPS.d=MAPS.a.map(function(r){return r.replace(/H/g,'M').replace(/K/g,'L')});
 function spriteFromMap(rows,pal){var h=rows.length,w=rows[0].length,cv=document.createElement('canvas');cv.width=w;cv.height=h;var c=cv.getContext('2d');
   rows.forEach(function(r,y){r.split('').forEach(function(ch,x){if(ch==='.')return;c.fillStyle=pal[ch];c.fillRect(x,y,1,1);});});return cv;}
 function drawSprite(ctx,cv,x,y,s,flip){ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(x,y);if(flip)ctx.scale(-1,1);ctx.drawImage(cv,-cv.width*s/2,-cv.height*s/2,cv.width*s,cv.height*s);ctx.restore();}
-var SPR={};Object.keys(MAPS).forEach(function(k){SPR[k]=spriteFromMap(MAPS[k],PAL);});
+var SPR={};Object.keys(MAPS).forEach(function(k){SPR[k]=spriteFromMap(MAPS[k],k==='robo'?PAL_ROBO:PAL);});
 function coin(x,X,Y,r){x.save();x.fillStyle='#d4a54a';x.beginPath();x.arc(X,Y,r,0,7);x.fill();x.fillStyle='#f1c84a';x.beginPath();x.arc(X-r*.15,Y-r*.15,r*.7,0,7);x.fill();x.restore();}
 function ledgerIcon(x,X,Y,w,h,col,line){x.fillStyle=col||'#efe6d2';rr(x,X,Y,w,h,4);x.fill();x.strokeStyle=line||'rgba(120,100,80,.45)';for(var i=1;i<4;i++){x.beginPath();x.moveTo(X+4,Y+i*h/4);x.lineTo(X+w-4,Y+i*h/4);x.stroke();}}
 
@@ -82,7 +84,7 @@ function heroArt(anchor){var cv=$('#heroCv');if(!cv)return;var r=rng(7),t=0,towe
     if(anchor==='C'){x.fillStyle='#2b2a3d';x.beginPath();x.arc(W*.86,H*.42,H*.22,0,7);x.fill();x.strokeStyle='#4a4766';x.lineWidth=s*2;x.stroke();
       x.strokeStyle='#6a6488';x.lineWidth=s;for(var k=0;k<6;k++){var a=k*Math.PI/3+t*.1;x.beginPath();x.moveTo(W*.86,H*.42);x.lineTo(W*.86+Math.cos(a)*H*.12,H*.42+Math.sin(a)*H*.12);x.stroke();}
       towers.forEach(function(c){for(var j=0;j<c.h;j++){var y=base-j*s*2.2,X=W*c.x;x.fillStyle=j%2?'#d4a54a':'#f1c84a';x.fillRect(Math.round(X-s*4),Math.round(y),s*8,s*2);}});
-      drawSprite(x,SPR.robo,W*.62,H*.3+Math.sin(t*2)*s*1.5,s*1.6);}
+      drawSprite(x,SPR.robo,W*.62,base-s*12.8,s*1.6);}
     else{ // D: 사무실 책상 + 서류 + 두 사람
       x.fillStyle='#2a2440';x.fillRect(W*.45,H*.62,W*.5,s*4);x.fillStyle='#3a3050';x.fillRect(W*.47,H*.62+s*4,s*3,H*.24);x.fillRect(W*.92,H*.62+s*4,s*3,H*.24);
       for(var p=0;p<4;p++){x.fillStyle='#efe6d2';x.fillRect(W*(.55+p*.08),H*.62-s*(1+p%2),s*12,s*2);}
@@ -151,7 +153,7 @@ function Duel(o){var root=$('#duelBox'),shown=false,guess=null;
     $('#scF').textContent=(res==='F'||res==='X')?1:0;$('#scR').textContent=res==='R'?1:0;
     $('.bars',root).innerHTML=bar(o.names.fly,f,C.fly)+bar(o.names.robo,b,C.robo);
     $('.say.asst p',root).textContent=o.say(r,res);
-    var who={F:'초파리 승.',R:'Money-Robo 승.',D:'이번 판은 나눠 갖는다.',X:'점수와 상관없이 Money-Robo 실격.'}[res];
+    var who={F:'초파리 승.',R:'주판봇 승.',D:'이번 판은 나눠 갖는다.',X:'점수와 상관없이 주판봇 실격.'}[res];
     $('.say.verdict p',root).textContent=res==='X'?(o.foulRule+'을 어겼다. '+who):(o.lesson+'. '+who);
     $('#guessFb').textContent=guess?(guess===res?'맞혔어요. 예측이 결과와 같았어요.':'예측과 달랐어요. 위 두 막대를 다시 비교해 보세요.'):'';
     root.classList.add('open');shown=true;this.textContent='다시 닫기';if(o.onReveal)setTimeout(function(){o.onReveal(res);},30);});

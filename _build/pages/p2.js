@@ -51,8 +51,8 @@ function bits(h){var s='';for(var i=0;i<64;i++)s+=('000'+parseInt(h[i],16).toStr
   addMod(c2b,step);addEventListener('resize',drawB);reset();})();
 
 function prob(tries,space){return Math.min(1,tries/space);}
-Duel({names:{fly:'초파리 (비밀 16자 덧붙임)',robo:'Money-Robo (6자리 그대로)'},higherIsBetter:false,drawMargin:0,
+Duel({names:{fly:'초파리 (비밀 16자 덧붙임)',robo:'주판봇 (6자리 그대로)'},higherIsBetter:false,drawMargin:0,
   run:function(){return {fly:prob(1e6,1e6*Math.pow(62,16)),robo:prob(1e6,1e6)};},bar:function(v){return v;},fmt:function(v){return v>=0.001?(100*v).toFixed(1)+'%':v.toExponential(1);},
   lesson:'해시는 거꾸로 계산할 수 없지만, 후보가 적으면 다 대입해 볼 수 있다',
-  say:function(r){return '100만 번 대입으로 원문을 찾을 확률은 초파리 쪽 '+r.fly.toExponential(1)+', Money-Robo 쪽 '+(100*r.robo).toFixed(0)+'%예요. 6자리 숫자는 후보가 딱 100만 개라 반드시 찾아요.';}});
+  say:function(r){return '100만 번 대입으로 원문을 찾을 확률은 초파리 쪽 '+r.fly.toExponential(1)+', 주판봇 쪽 '+(100*r.robo).toFixed(0)+'%예요. 6자리 숫자는 후보가 딱 100만 개라 반드시 찾아요.';}});
 }});

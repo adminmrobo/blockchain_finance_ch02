@@ -26,7 +26,7 @@ LAB.start({anchor:'C',init:function(){
 /* ② 채굴 경주 */
 function race(shares,blocks,seed){var r=rng(seed),tot=shares.reduce(function(a,b){return a+b},0),wins=shares.map(function(){return 0}),seq=[];
   for(var b=0;b<blocks;b++){var u=r()*tot,acc=0;for(var i=0;i<shares.length;i++){acc+=shares[i];if(u<acc){wins[i]++;seq.push(i);break;}}}return {wins:wins,seq:seq};}
-(function(){var c2=$('#c2'),c2b=$('#c2b'),robo=4,other=1,res=null,t=0,NM=['초파리','Money-Robo','채굴자 C','채굴자 D'],COL=[C.fly,C.robo,C.info,C.stain];
+(function(){var c2=$('#c2'),c2b=$('#c2b'),robo=4,other=1,res=null,t=0,NM=['초파리','주판봇','채굴자 C','채굴자 D'],COL=[C.fly,C.robo,C.info,C.stain];
   function shares(){return [1,robo,other,other];}
   slider('r2r',function(v){robo=v;res=null;upd();});slider('r2o',function(v){other=v;res=null;upd();});
   $('#b2Run').addEventListener('click',function(){res=race(shares(),100,26);t=0;upd();});
@@ -41,14 +41,14 @@ function race(shares,blocks,seed){var r=rng(seed),tot=shares.reduce(function(a,b
     NM.forEach(function(n,i){var X=50+i*(W-100)/3;txt(x,n,X,H-12,{a:'center',s:12,c:COL[i],w:700});for(var k=0;k<cnt[i];k++){var col=k%5,row=Math.floor(k/5);if(row<12)coin(x,X-20+col*10,H-34-row*9,4);}txt(x,cnt[i]+'',X+34,H-34,{s:12,w:700});});
     txt(x,res?'블록 '+shown+'/100':'"블록 100개 경주"를 눌러 보세요',12,20,{s:12,c:C.muted});stamp(x,W,'설명용 장면');}
   function upd(){var s=shares(),tot=s.reduce(function(a,b){return a+b},0);
-    kpis($('#k2'),[[(100*robo/tot).toFixed(0)+'%','Money-Robo 계산력 몫','a'],[res?res.wins[1]+'개':'—','Money-Robo가 만든 블록','m'],[(100/tot).toFixed(0)+'%','초파리 계산력 몫','a'],[res?res.wins[0]+'개':'—','초파리가 만든 블록','m']]);
+    kpis($('#k2'),[[(100*robo/tot).toFixed(0)+'%','주판봇 계산력 몫','a'],[res?res.wins[1]+'개':'—','주판봇이 만든 블록','m'],[(100/tot).toFixed(0)+'%','초파리 계산력 몫','a'],[res?res.wins[0]+'개':'—','초파리가 만든 블록','m']]);
     $('#eq2').innerHTML='블록을 먼저 찾을 확률(i) = <b>계산력(i)</b> ÷ <em>전체 계산력 '+tot+'</em> · 보상: 블록마다 첫 거래로 <i>새 코인</i>';
-    var m=[];if(res)m.push(['g','블록 100개 중 Money-Robo '+res.wins[1]+'개, 초파리 '+res.wins[0]+'개. 계산력 몫('+(100*robo/tot).toFixed(0)+'% : '+(100/tot).toFixed(0)+'%)과 비슷하게 나뉘었어요.']);
-    m.push([robo/tot>0.5?'r':'a',robo/tot>0.5?'Money-Robo의 계산력 몫이 50%를 넘었어요. 이 상태라면 위조 사슬을 정직한 사슬보다 빨리 늘릴 수도 있어요(2-07, 3장의 51% 공격).':'계산력이 여러 채굴자에게 나뉘어 있으면 한 명이 사슬을 마음대로 바꾸기 어려워요.']);ins($('#ins2'),m);drawA();drawB(0);}
+    var m=[];if(res)m.push(['g','블록 100개 중 주판봇 '+res.wins[1]+'개, 초파리 '+res.wins[0]+'개. 계산력 몫('+(100*robo/tot).toFixed(0)+'% : '+(100/tot).toFixed(0)+'%)과 비슷하게 나뉘었어요.']);
+    m.push([robo/tot>0.5?'r':'a',robo/tot>0.5?'주판봇의 계산력 몫이 50%를 넘었어요. 이 상태라면 위조 사슬을 정직한 사슬보다 빨리 늘릴 수도 있어요(2-07, 3장의 51% 공격).':'계산력이 여러 채굴자에게 나뉘어 있으면 한 명이 사슬을 마음대로 바꾸기 어려워요.']);ins($('#ins2'),m);drawA();drawB(0);}
   mod(c2b,drawB,true);addEventListener('resize',upd);upd();})();
 
-Duel({names:{fly:'초파리 (장비 1대)',robo:'Money-Robo (장비 4대)'},higherIsBetter:true,drawMargin:0,
+Duel({names:{fly:'초파리 (장비 1대)',robo:'주판봇 (장비 4대)'},higherIsBetter:true,drawMargin:0,
   run:function(){var r=race([1,4],100,206);return {fly:r.wins[0],robo:r.wins[1]};},bar:function(v){return v/100;},fmt:function(v){return v+'블록';},
   lesson:'계산력이 많은 쪽이 블록을 더 자주 만든다. 비트코인의 한 표는 계산력이다',
-  say:function(r){return '블록 100개 중 초파리 쪽 '+r.fly+'개, Money-Robo 쪽 '+r.robo+'개예요. 계산력 몫 20% 대 80%와 비슷해요. 시드 206으로 고정했어요.';}});
+  say:function(r){return '블록 100개 중 초파리 쪽 '+r.fly+'개, 주판봇 쪽 '+r.robo+'개예요. 계산력 몫 20% 대 80%와 비슷해요. 시드 206으로 고정했어요.';}});
 }});

@@ -52,8 +52,8 @@ var NM=['A','B','C'];
   mod(c2b,drawB,true);addEventListener('resize',upd);reset();})();
 
 function rows(replay){var s=0;for(var k=1;k<=1000;k++)s+=replay?10*k:1;return s;}
-Duel({names:{fly:'초파리 (이력 다시 더하기)',robo:'Money-Robo (DB 칸 읽기)'},higherIsBetter:false,drawMargin:0,
+Duel({names:{fly:'초파리 (이력 다시 더하기)',robo:'주판봇 (DB 칸 읽기)'},higherIsBetter:false,drawMargin:0,
   run:function(){return {fly:rows(true),robo:rows(false)};},bar:function(v){return Math.log10(v)/7;},fmt:function(v){return fmt(v)+'줄';},
   lesson:'대량 데이터를 빠르게 다루는 일은 데이터베이스가 낫다',
-  say:function(r){return '조회 1,000번에 읽은 줄은 초파리 쪽 '+fmt(r.fly)+'줄, Money-Robo 쪽 '+fmt(r.robo)+'줄이에요. 약 '+fmt(r.fly/r.robo)+'배 차이예요. 막대는 로그 눈금이에요.';}});
+  say:function(r){return '조회 1,000번에 읽은 줄은 초파리 쪽 '+fmt(r.fly)+'줄, 주판봇 쪽 '+fmt(r.robo)+'줄이에요. 약 '+fmt(r.fly/r.robo)+'배 차이예요. 막대는 로그 눈금이에요.';}});
 }});

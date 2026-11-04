@@ -1,7 +1,7 @@
 """Page template for the blockchain chapter series (ai-lab-explainer v1.7)."""
 import json, html
 
-NAMES = {'doc': '박사', 'asst': '하루(조수)', 'fly': '초파리 연구원', 'robo': 'Money-Robo'}
+NAMES = {'doc': '박사', 'asst': '하루(조수)', 'fly': '초파리 연구원', 'robo': '주판봇'}
 ANCHOR_LEFT = {'A': '초파리에서는', 'B': '연구실에서는', 'C': '장부로 보면', 'D': '일상으로 치면'}
 
 def say(who, mood, img, text, cls=''):
@@ -125,20 +125,20 @@ def page(P, chapter, assets='assets/'):
     <div class="duelhead">
       <div><img data-who="fly" data-mood="point" data-img="fly_e08" data-face="right" alt="" aria-hidden="true"><div style="color:var(--c-fly);font-weight:700">초파리 연구원</div></div>
       <div class="vs">VS</div>
-      <div><img data-who="robo" data-mood="coin" data-img="robo_e16" data-face="left" alt="" aria-hidden="true"><div style="color:var(--c-robo);font-weight:700">Money-Robo</div></div>
+      <div><img data-who="robo" data-mood="coin" data-img="robo_e16" data-face="left" alt="" aria-hidden="true"><div style="color:var(--c-robo);font-weight:700">주판봇</div></div>
     </div>
     <div class="choices">
       <div class="choice fly"><b>초파리의 선택: {D['fly'][0]}</b><p>"{D['fly'][1]}"</p><p class="sub" style="margin:0">{D['fly'][2]}</p></div>
-      <div class="choice robo"><b>Money-Robo의 선택: {D['robo'][0]}</b><p>"{D['robo'][1]}"</p><p class="sub" style="margin:0">{D['robo'][2]}</p></div>
+      <div class="choice robo"><b>주판봇의 선택: {D['robo'][0]}</b><p>"{D['robo'][1]}"</p><p class="sub" style="margin:0">{D['robo'][2]}</p></div>
     </div>
     <div class="guess" role="group" aria-label="먼저 맞혀 보기">
       <button class="bt" data-g="F" aria-pressed="false">초파리가 이길 것 같다</button>
-      <button class="bt" data-g="R" aria-pressed="false">Money-Robo가 이길 것 같다</button>
+      <button class="bt" data-g="R" aria-pressed="false">주판봇이 이길 것 같다</button>
       <button class="bt" data-g="D" aria-pressed="false">비길 것 같다</button>
     </div>
     <div style="text-align:center"><button class="bt primary reveal">결과 보기</button></div>
     <div class="after">
-      <div class="score"><span class="f">초파리 <i id="scF">0</i></span><span class="r">Money-Robo <i id="scR">0</i></span></div>
+      <div class="score"><span class="f">초파리 <i id="scF">0</i></span><span class="r">주판봇 <i id="scR">0</i></span></div>
       <div class="bars" aria-live="polite"></div>
       {say('asst','firm','asst_e12','—','asst')}
       {say('doc','judge','doc_e10','—','verdict')}

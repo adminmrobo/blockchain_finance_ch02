@@ -60,8 +60,8 @@ var HDR=80;
   mod(c2b,drawB,true);addEventListener('resize',upd);upd();})();
 
 function bytes(perBlock){return Math.ceil(1000/perBlock)*HDR+1000*250;}
-Duel({names:{fly:'초파리 (1건씩)',robo:'Money-Robo (100건씩)'},higherIsBetter:false,drawMargin:0,
+Duel({names:{fly:'초파리 (1건씩)',robo:'주판봇 (100건씩)'},higherIsBetter:false,drawMargin:0,
   run:function(){return {fly:bytes(1),robo:bytes(100)};},bar:function(v){return v/1e6;},fmt:function(v){return fmt(v)+'B';},
   lesson:'묶으면 머리글 하나로 여러 거래를 지킨다',
-  say:function(r){return '총 저장량은 초파리 쪽 '+fmt(r.fly)+'바이트, Money-Robo 쪽 '+fmt(r.robo)+'바이트예요. 차이 '+fmt(r.fly-r.robo)+'바이트는 전부 머리글이에요(990개 × 80바이트).';}});
+  say:function(r){return '총 저장량은 초파리 쪽 '+fmt(r.fly)+'바이트, 주판봇 쪽 '+fmt(r.robo)+'바이트예요. 차이 '+fmt(r.fly-r.robo)+'바이트는 전부 머리글이에요(990개 × 80바이트).';}});
 }});

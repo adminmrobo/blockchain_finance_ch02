@@ -2,8 +2,8 @@ import json, os, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from template import say
 from build import CHAPTER, ROOT, SRC
-RES = {'2-01': ('R', 'Money-Robo 승'), '2-02': ('F', '초파리 승'), '2-03': ('X', 'Money-Robo 실격'), '2-04': ('R', 'Money-Robo 승'),
-       '2-05': ('F', '초파리 승'), '2-06': ('R', 'Money-Robo 승'), '2-07': ('F', '초파리 승')}
+RES = {'2-01': ('R', '주판봇 승'), '2-02': ('F', '초파리 승'), '2-03': ('X', '주판봇 실격'), '2-04': ('R', '주판봇 승'),
+       '2-05': ('F', '초파리 승'), '2-06': ('R', '주판봇 승'), '2-07': ('F', '초파리 승')}
 COL = {'F': 'var(--c-fly)', 'R': 'var(--c-robo)', 'D': 'var(--amber)', 'X': 'var(--c-fly)'}
 DESC = {'2-01': '거래를 블록으로 묶고 머리글에 요약을 담는다. 묶으면 무엇이 줄고 무엇이 늦어지는가.',
         '2-02': '쉼표 하나에 지문이 통째로 바뀌는 해시. 단방향인데도 후보가 적으면 찾히는 이유.',
@@ -52,8 +52,8 @@ html = f'''<!DOCTYPE html><html lang="ko"><head>
   <tr><td>2-07</td><td>난이도와 확정</td><td>간격 유지, 기다릴수록 공격 확률 감소</td><td>q ≥ 0.5 공격 → 3장</td></tr></tbody></table></div>
 </div></section>
 <section class="level" id="score"><div class="wrap"><h2>대결 결산</h2>
-  <section class="kpis"><div class="kpi" style="border-top-color:var(--c-fly)"><b>{tally['F']}승</b><span>초파리 연구원 (실격승 1번 포함)</span></div><div class="kpi" style="border-top-color:var(--c-robo)"><b>{tally['R']}승</b><span>Money-Robo</span></div><div class="kpi a"><b>{tally['D']}번</b><span>무승부</span></div></section>
-  {say('doc','judge','doc_e10','2장은 4 대 3. 묶음·속도·장비는 Money-Robo가, "후보가 적으면?"·"다수 사본과 같은가?"·"몇 블록 기다렸나?" 같은 의심은 초파리가 가져갔다.')}
+  <section class="kpis"><div class="kpi" style="border-top-color:var(--c-fly)"><b>{tally['F']}승</b><span>초파리 연구원 (실격승 1번 포함)</span></div><div class="kpi" style="border-top-color:var(--c-robo)"><b>{tally['R']}승</b><span>주판봇</span></div><div class="kpi a"><b>{tally['D']}번</b><span>무승부</span></div></section>
+  {say('doc','judge','doc_e10','2장은 4 대 3. 묶음·속도·장비는 주판봇이, "후보가 적으면?"·"다수 사본과 같은가?"·"몇 블록 기다렸나?" 같은 의심은 초파리가 가져갔다.')}
 </div></section>
 <section class="level" id="about"><div class="wrap"><h2>이 저장소</h2>
   <p class="sub">각 HTML은 assets/ 폴더의 공용 파일(lab.css, lab.js, sprites.js)을 불러옵니다. 저장소를 통째로 올리거나 내려받아 index.html을 열면 됩니다. 편마다 맨 끝의 "온톨로지·서지 꾸러미"에서 지식 그래프와 참고문헌을 ZIP으로 가져갈 수 있습니다.</p>
