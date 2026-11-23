@@ -1,0 +1,139 @@
+{
+ "version": "1.0",
+ "made": "2026-11-24",
+ "via": "rehang-2026-11-24",
+ "domains": [
+  "fin"
+ ],
+ "note": "분야 뼈대 주제에 다시 걸기(ai-lab-retrofit 15장). links는 자동 후보이며 틀린 줄은 지우면 된다. 빌드 스크립트가 있는 저장소는 빌드 끝에 rehang.apply_overlay()가 이 파일을 적용한다.",
+ "topics": {
+  "lab:topic/blockchain-consensus": {
+   "ko": "합의 알고리즘",
+   "en": "Consensus algorithms",
+   "domain": [
+    "fin"
+   ],
+   "level": 2
+  },
+  "lab:topic/ledger-evolution": {
+   "ko": "장부의 진화",
+   "en": "Evolution of ledgers",
+   "domain": [
+    "fin"
+   ],
+   "level": 2
+  },
+  "lab:topic/relational-model": {
+   "ko": "관계 모형",
+   "en": "Relational model",
+   "domain": [
+    "data"
+   ],
+   "level": 1
+  }
+ },
+ "links": {
+  "lab:concept/block": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "블록"
+  },
+  "lab:concept/blockchain": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "블록체인"
+  },
+  "lab:concept/hash-function": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "해시"
+  },
+  "lab:concept/integrity": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "무결성"
+  },
+  "lab:concept/majority-vote": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "과반 다수결"
+  },
+  "lab:concept/mining": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "채굴"
+  },
+  "lab:concept/provenance-tracking": {
+   "topic": "lab:topic/ledger-evolution",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "이력 관리"
+  },
+  "lab:method/database": {
+   "topic": "lab:topic/relational-model",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "데이터베이스"
+  },
+  "lab:method/distributed-ledger": {
+   "topic": "lab:topic/ledger-evolution",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "분산원장"
+  },
+  "lab:method/hash-chain": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "해시로 묶은 블록 사슬"
+  },
+  "lab:method/history-ledger": {
+   "topic": "lab:topic/ledger-evolution",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "이력 장부 (변화를 쌓기)"
+  },
+  "lab:method/proof-of-work": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "작업증명"
+  },
+  "lab:term/block-header": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "블록 헤더"
+  },
+  "lab:term/node": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "노드"
+  },
+  "lab:term/nonce": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "논스"
+  },
+  "lab:term/sha-256": {
+   "topic": "lab:topic/blockchain-consensus",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "SHA-256"
+  }
+ },
+ "retag": {
+  "from": [],
+  "to": [
+   "fin"
+  ]
+ }
+}
